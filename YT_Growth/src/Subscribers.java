@@ -78,7 +78,10 @@ public class Subscribers {
 		btn.addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				String cSub = subText.getText();
+				String cGrowth = growthText.getText();
+				String cDays = daysText.getText();
 				
 				
 			}
