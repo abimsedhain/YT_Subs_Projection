@@ -1,10 +1,12 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -83,6 +85,34 @@ public class Subscribers {
 				String cGrowth = growthText.getText();
 				String cDays = daysText.getText();
 				
+				if(cSub.equals("") || cGrowth.equals("") ||  cDays.equals("") ){
+					JOptionPane.showMessageDialog(frame,"Fields can't be empty");
+				}
+				else{
+					try 
+					{
+						int subb = Integer.parseInt(subText.getText());;
+						double growth = Double.parseDouble(growthText.getText());;
+						int days = Integer.parseInt(daysText.getText());;
+						
+						System.out.println(subb);
+						System.out.println(growth);
+						System.out.println(days);
+						
+												
+						int newSub = (int) (subb * Math.pow((1+growth),days));
+						
+						DecimalFormat df = new DecimalFormat("#,###");
+						
+						JOptionPane.showMessageDialog(frame,"At this growth rate, you will " +
+														df.format(newSub) + " subscribers in "+ days +" months",
+														"RESULT",JOptionPane.INFORMATION_MESSAGE);
+					}
+					catch (NumberFormatException e1) 
+					{
+						JOptionPane.showMessageDialog(frame,"Not a number");
+						}
+				}				
 				
 			}
 			
